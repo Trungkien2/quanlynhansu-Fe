@@ -1,5 +1,5 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useRef, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import {
   CButton,
   CCard,
@@ -12,11 +12,69 @@ import {
   CInputGroup,
   CInputGroupText,
   CRow,
+  CToast,
+  CToastBody,
+  CToastHeader,
+  CToaster,
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 import { cilLockLocked, cilUser } from '@coreui/icons'
+import { useForm, Controller } from 'react-hook-form'
+import * as authApi from '../../../api/authApi'
 
 const Login = () => {
+  const navigate = useNavigate()
+  const [toast, addToast] = useState(0)
+  const toaster = useRef()
+  const exampleToast = (
+    <CToast title="CoreUI for React.js">
+      <CToastHeader closeButton>
+        <svg
+          className="rounded me-2"
+          width="20"
+          height="20"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="xMidYMid slice"
+          focusable="false"
+          role="img"
+        >
+          <rect width="100%" height="100%" fill="#007aff"></rect>
+        </svg>
+        <strong className="me-auto">Login</strong>
+      </CToastHeader>
+      <CToastBody>Login Success, welcome back.</CToastBody>
+    </CToast>
+  )
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    mode: 'onSubmit',
+    reValidateMode: 'onSubmit',
+    defaultValues: {
+      email: '',
+      password: '',
+    },
+  })
+  function onError(errors) {}
+  async function onSubmit(data) {
+    try {
+      const res = await authApi.login({
+        email: data?.email,
+        password: data?.password,
+      })
+      if (res?.user) {
+        sessionStorage.setItem('token', res?.user)
+        addToast(exampleToast)
+        setTimeout(() => {
+          navigate('/')
+        }, 2000)
+      }
+    } catch (error) {
+      alert(error.response.data.message)
+    }
+  }
   return (
     <div className="bg-body-tertiary min-vh-100 d-flex flex-row align-items-center">
       <CContainer>
@@ -25,28 +83,41 @@ const Login = () => {
             <CCardGroup>
               <CCard className="p-4">
                 <CCardBody>
-                  <CForm>
+                  <CForm onSubmit={handleSubmit(onSubmit, onError)}>
                     <h1>Login</h1>
                     <p className="text-body-secondary">Sign In to your account</p>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
                         <CIcon icon={cilUser} />
                       </CInputGroupText>
-                      <CFormInput placeholder="Username" autoComplete="username" />
+                      <Controller
+                        name="email"
+                        control={control}
+                        render={({ field }) => (
+                          <CFormInput placeholder="Username" autoComplete="username" {...field} />
+                        )}
+                      />
                     </CInputGroup>
                     <CInputGroup className="mb-4">
                       <CInputGroupText>
                         <CIcon icon={cilLockLocked} />
                       </CInputGroupText>
-                      <CFormInput
-                        type="password"
-                        placeholder="Password"
-                        autoComplete="current-password"
+                      <Controller
+                        name="password"
+                        control={control}
+                        render={({ field }) => (
+                          <CFormInput
+                            type="password"
+                            placeholder="Password"
+                            autoComplete="current-password"
+                            {...field}
+                          />
+                        )}
                       />
                     </CInputGroup>
                     <CRow>
                       <CCol xs={6}>
-                        <CButton color="primary" className="px-4">
+                        <CButton type="submit" color="primary" className="px-4">
                           Login
                         </CButton>
                       </CCol>
@@ -79,6 +150,7 @@ const Login = () => {
           </CCol>
         </CRow>
       </CContainer>
+      <CToaster ref={toaster} push={toast} placement="top-end" />
     </div>
   )
 }

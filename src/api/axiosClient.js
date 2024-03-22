@@ -1,11 +1,11 @@
 import axios from 'axios'
 import queryString from 'query-string'
-import { getToken } from 'src/util/Utils'
+// import { getToken } from 'src/util/Utils'
 
 const axiosClient = axios.create({
   headers: {
     'content-type': 'application/json',
-    Authorization: `Bearer ${getToken()}`,
+    // Authorization: `Bearer ${getToken()}`,
   },
   paramsSerializer: (params) => queryString.stringify(params),
 })
