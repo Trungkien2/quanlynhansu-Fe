@@ -65,7 +65,7 @@ const Login = () => {
         password: data?.password,
       })
       if (res?.user) {
-        sessionStorage.setItem('token', res?.user)
+        sessionStorage.setItem('token', JSON.stringify(res?.user))
         addToast(exampleToast)
         setTimeout(() => {
           navigate('/')

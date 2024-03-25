@@ -12,19 +12,19 @@ import {
   CTableRow,
 } from '@coreui/react'
 import React, { useEffect, useState } from 'react'
-import * as departmentApi from '../../../api/departmentApi'
-import { useNavigate } from 'react-router-dom'
+import * as API from '../../../api/employeeApi'
+import { useNavigate, useParams } from 'react-router-dom'
 
-const DepartmentList = () => {
+const DepartmentEmployeeList = () => {
   const [list, setList] = useState([])
   const navigate = useNavigate()
-  const loginInfo = sessionStorage.getItem('token')
-    ? JSON.parse(sessionStorage.getItem('token'))
-    : ''
+  let { department_id } = useParams()
+
   const getList = async () => {
     try {
-      const res = await departmentApi.getList({
-        fields: ['$all'],
+      const res = await API.getList({
+        fields: ['$all', { department: ['name'] }],
+        where: { department_id },
       })
       console.log('🚀 ~ getList ~ res:', res)
       setList(res?.rows)
@@ -42,7 +42,6 @@ const DepartmentList = () => {
   }
   useEffect(() => {
     getList()
-    console.log('🚀 ~ DepartmentList ~ loginInfo:', loginInfo)
   }, [])
 
   return (
@@ -53,17 +52,15 @@ const DepartmentList = () => {
           justifyContent: 'flex-end',
           marginBottom: '10px',
         }}
-      >
-        <CButton color="primary" onClick={() => navigate('/department/create')}>
-          Add
-        </CButton>
-      </div>
+      ></div>
       <CTable>
         <CTableHead>
           <CTableRow>
             <CTableHeaderCell scope="col">#</CTableHeaderCell>
+            <CTableHeaderCell scope="col">Email</CTableHeaderCell>
             <CTableHeaderCell scope="col">name</CTableHeaderCell>
-            <CTableHeaderCell scope="col">Action</CTableHeaderCell>
+            <CTableHeaderCell scope="col">Phone</CTableHeaderCell>
+            <CTableHeaderCell scope="col">Department Name</CTableHeaderCell>
           </CTableRow>
         </CTableHead>
         <CTableBody>
@@ -71,18 +68,10 @@ const DepartmentList = () => {
             list?.map((item, index) => (
               <CTableRow key={item.id}>
                 <CTableHeaderCell scope="row">{index + 1}</CTableHeaderCell>
+                <CTableDataCell>{item?.email}</CTableDataCell>
                 <CTableDataCell>{item?.name}</CTableDataCell>
-                <CTableDataCell>
-                  <CDropdown>
-                    <CDropdownToggle color="secondary">Action</CDropdownToggle>
-                    <CDropdownMenu>
-                      <CDropdownItem onClick={() => navigate(`/department/${item?.id}`)}>
-                        Edit
-                      </CDropdownItem>
-                      <CDropdownItem onClick={() => handleDelete(item?.id)}>Delete</CDropdownItem>
-                    </CDropdownMenu>
-                  </CDropdown>
-                </CTableDataCell>
+                <CTableDataCell>{item?.phone || '-'}</CTableDataCell>
+                <CTableDataCell>{item?.department?.name || '-'}</CTableDataCell>
               </CTableRow>
             ))}
         </CTableBody>
@@ -91,4 +80,4 @@ const DepartmentList = () => {
   )
 }
 
-export default DepartmentList
+export default DepartmentEmployeeList

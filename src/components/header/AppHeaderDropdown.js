@@ -23,8 +23,12 @@ import {
 import CIcon from '@coreui/icons-react'
 
 import avatar8 from './../../assets/images/avatars/8.jpg'
+import { useSetRecoilState } from 'recoil'
+import { resetStoreOnLogout } from '../../recoil/listState'
 
 const AppHeaderDropdown = () => {
+  const reset = useSetRecoilState(resetStoreOnLogout)
+
   return (
     <CDropdown variant="nav-item">
       <CDropdownToggle placement="bottom-end" className="py-0 pe-0" caret={false}>
@@ -84,9 +88,15 @@ const AppHeaderDropdown = () => {
           </CBadge>
         </CDropdownItem>
         <CDropdownDivider />
-        <CDropdownItem href="#">
+        <CDropdownItem
+          onClick={() => {
+            sessionStorage.clear()
+
+            window.location.reload()
+          }}
+        >
           <CIcon icon={cilLockLocked} className="me-2" />
-          Lock Account
+          Sign out
         </CDropdownItem>
       </CDropdownMenu>
     </CDropdown>

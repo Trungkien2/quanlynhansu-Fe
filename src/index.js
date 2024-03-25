@@ -5,9 +5,12 @@ import 'core-js'
 
 import App from './App'
 import store from './store'
+import { RecoilRoot } from 'recoil'
 
 createRoot(document.getElementById('root')).render(
   <Provider store={store}>
-    <App />
+    <RecoilRoot>
+      <App />
+    </RecoilRoot>
   </Provider>,
 )

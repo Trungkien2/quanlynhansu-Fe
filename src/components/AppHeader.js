@@ -27,6 +27,8 @@ import {
 
 import { AppBreadcrumb } from './index'
 import { AppHeaderDropdown } from './header/index'
+import { resetStoreOnLogout } from '../recoil/listState'
+import { useSetRecoilState } from 'recoil'
 
 const AppHeader = () => {
   const headerRef = useRef()
@@ -56,12 +58,6 @@ const AppHeader = () => {
             <CNavLink to="/dashboard" as={NavLink}>
               Dashboard
             </CNavLink>
-          </CNavItem>
-          <CNavItem>
-            <CNavLink href="#">Users</CNavLink>
-          </CNavItem>
-          <CNavItem>
-            <CNavLink href="#">Settings</CNavLink>
           </CNavItem>
         </CHeaderNav>
         <CHeaderNav className="ms-auto">

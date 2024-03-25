@@ -59,6 +59,9 @@ const SalaryList = React.lazy(() => import('./views/pages/salary/SalaryList'))
 
 // department
 const DepartmentList = React.lazy(() => import('./views/pages/department/DepartmentList'))
+const DepartmenEmployeetList = React.lazy(
+  () => import('./views/pages/department/DeparmentEmployeeList'),
+)
 const CrudD = React.lazy(() => import('./views/pages/department/CrudDepartment'))
 
 const routes = [
@@ -112,6 +115,11 @@ const routes = [
 
   { path: '/salary', name: 'SalaryList', element: SalaryList },
   { path: '/department', name: 'DepartmentList', element: DepartmentList },
+  {
+    path: '/department/list_employee/:department_id',
+    name: 'DepartmentList',
+    element: DepartmenEmployeetList,
+  },
   { path: '/department/create', name: 'departmentList', element: CrudD },
   { path: '/department/:id', name: 'departmentList', element: CrudD },
 ]
