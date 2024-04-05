@@ -3,3 +3,8 @@ export const convertParams = (params) => {
     Object.entries(params).map(([key, value]) => [key, JSON.stringify(value)]),
   )
 }
+
+export const ROLE = {
+  ADMIN: 'ADMIN',
+  USER: 'USER',
+}

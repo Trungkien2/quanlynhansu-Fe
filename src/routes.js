@@ -56,6 +56,7 @@ const CrudE = React.lazy(() => import('./views/pages/employee/CrudEmployee'))
 
 // Salary
 const SalaryList = React.lazy(() => import('./views/pages/salary/SalaryList'))
+const CRUDSalary = React.lazy(() => import('./views/pages/salary/CrudSalary'))
 
 // department
 const DepartmentList = React.lazy(() => import('./views/pages/department/DepartmentList'))
@@ -63,6 +64,9 @@ const DepartmenEmployeetList = React.lazy(
   () => import('./views/pages/department/DeparmentEmployeeList'),
 )
 const CrudD = React.lazy(() => import('./views/pages/department/CrudDepartment'))
+
+// time keeping
+const TimeKeepingUser = React.lazy(() => import('./views/pages/timeKeeping/TimeKeepingUser'))
 
 const routes = [
   { path: '/', exact: true, name: 'Home' },
@@ -114,6 +118,8 @@ const routes = [
   { path: '/employee/:id', name: 'EmployeeList', element: CrudE },
 
   { path: '/salary', name: 'SalaryList', element: SalaryList },
+  { path: '/salary/create', name: 'Salary', element: CRUDSalary },
+  { path: '/salary/:id', name: 'Salary', element: CRUDSalary },
   { path: '/department', name: 'DepartmentList', element: DepartmentList },
   {
     path: '/department/list_employee/:department_id',
@@ -122,6 +128,8 @@ const routes = [
   },
   { path: '/department/create', name: 'departmentList', element: CrudD },
   { path: '/department/:id', name: 'departmentList', element: CrudD },
+
+  { path: '/timeKeeping_user', name: 'timeKeeping user', element: TimeKeepingUser },
 ]
 
 export default routes

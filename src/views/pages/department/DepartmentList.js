@@ -63,6 +63,7 @@ const DepartmentList = () => {
           <CTableRow>
             <CTableHeaderCell scope="col">#</CTableHeaderCell>
             <CTableHeaderCell scope="col">name</CTableHeaderCell>
+            <CTableHeaderCell scope="col">View Employee</CTableHeaderCell>
             <CTableHeaderCell scope="col">Action</CTableHeaderCell>
           </CTableRow>
         </CTableHead>
@@ -72,6 +73,14 @@ const DepartmentList = () => {
               <CTableRow key={item.id}>
                 <CTableHeaderCell scope="row">{index + 1}</CTableHeaderCell>
                 <CTableDataCell>{item?.name}</CTableDataCell>
+                <CTableDataCell>
+                  <CButton
+                    color="primary"
+                    onClick={() => navigate(`/department/list_employee/${item?.id}`)}
+                  >
+                    View{' '}
+                  </CButton>
+                </CTableDataCell>
                 <CTableDataCell>
                   <CDropdown>
                     <CDropdownToggle color="secondary">Action</CDropdownToggle>

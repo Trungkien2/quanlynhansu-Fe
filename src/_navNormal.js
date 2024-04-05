@@ -319,6 +319,12 @@ const _navNormal = [
     to: '/salary',
     icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />,
   },
+  {
+    component: CNavItem,
+    name: 'Time Keeping',
+    to: '/timeKeeping_user',
+    icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />,
+  },
 ]
 
 export default _navNormal
