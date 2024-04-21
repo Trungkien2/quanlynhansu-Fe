@@ -70,6 +70,10 @@ const CrudD = React.lazy(() => import('./views/pages/department/CrudDepartment')
 const TimeKeepingUser = React.lazy(() => import('./views/pages/timeKeeping/TimeKeepingUser'))
 const TimeKeepingAdmin = React.lazy(() => import('./views/pages/timeKeeping/TImeKeepingAdmin'))
 
+// news
+const newist = React.lazy(() => import('./views/pages/news/NewList'))
+const CrudN = React.lazy(() => import('./views/pages/news/CrudNew'))
+
 const routes = [
   { path: '/', exact: true, name: 'Home' },
   { path: '/dashboard', name: 'Dashboard', element: Dashboard },
@@ -134,6 +138,10 @@ const routes = [
 
   { path: '/timeKeeping_user', name: 'timeKeeping user', element: TimeKeepingUser },
   { path: '/timeKeeping_admin', name: 'timeKeeping admin', element: TimeKeepingAdmin },
+
+  { path: '/new', name: 'newList', element: newist },
+  { path: '/new/create', name: 'newList', element: CrudN },
+  { path: '/new/:id', name: 'newList', element: CrudN },
 ]
 
 export default routes

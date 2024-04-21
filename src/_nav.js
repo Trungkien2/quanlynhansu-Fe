@@ -312,28 +312,17 @@ const _nav = [
       text: 'NEW',
     },
   },
+  // {
+  //   component: CNavItem,
+  //   name: 'Employee',
+  //   to: '/employee',
+  //   icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />,
+  // },
+
   {
     component: CNavItem,
-    name: 'Employee',
-    to: '/employee',
-    icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />,
-  },
-  {
-    component: CNavItem,
-    name: 'Salary',
-    to: '/salary',
-    icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />,
-  },
-  {
-    component: CNavItem,
-    name: 'Department',
-    to: '/department',
-    icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />,
-  },
-  {
-    component: CNavItem,
-    name: 'Time Keeping',
-    to: '/timeKeeping_admin',
+    name: 'News',
+    to: '/new',
     icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />,
   },
 ]

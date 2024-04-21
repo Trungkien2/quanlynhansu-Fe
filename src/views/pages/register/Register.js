@@ -102,7 +102,7 @@ const Register = () => {
                       name="email"
                       control={control}
                       render={({ field }) => (
-                        <CFormInput placeholder="Username" autoComplete="username" {...field} />
+                        <CFormInput placeholder="email" autoComplete="username" {...field} />
                       )}
                     />
                   </CInputGroup>

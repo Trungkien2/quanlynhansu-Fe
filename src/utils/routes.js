@@ -5,4 +5,5 @@ export const ROUTE_API = {
   SALARY: '/salary',
   DEPARTMENT: '/department',
   TIME_KEEPING: '/timekeeping',
+  NEW: '/news',
 }
