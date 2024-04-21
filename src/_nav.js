@@ -330,6 +330,12 @@ const _nav = [
     to: '/department',
     icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />,
   },
+  {
+    component: CNavItem,
+    name: 'Time Keeping',
+    to: '/timeKeeping_admin',
+    icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />,
+  },
 ]
 
 export default _nav

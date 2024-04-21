@@ -62,6 +62,7 @@ const EmployeeList = () => {
             <CTableHeaderCell scope="col">name</CTableHeaderCell>
             <CTableHeaderCell scope="col">Phone</CTableHeaderCell>
             <CTableHeaderCell scope="col">Department Name</CTableHeaderCell>
+            <CTableHeaderCell scope="col">view Salary</CTableHeaderCell>
             <CTableHeaderCell scope="col">Action</CTableHeaderCell>
           </CTableRow>
         </CTableHead>
@@ -74,6 +75,11 @@ const EmployeeList = () => {
                 <CTableDataCell>{item?.name}</CTableDataCell>
                 <CTableDataCell>{item?.phone || '-'}</CTableDataCell>
                 <CTableDataCell>{item?.department?.name || '-'}</CTableDataCell>
+                <CTableDataCell>
+                  <CButton color="primary" onClick={() => navigate(`/salary/user/${item?.id}`)}>
+                    View{' '}
+                  </CButton>
+                </CTableDataCell>
                 <CTableDataCell>
                   <CDropdown>
                     <CDropdownToggle color="secondary">Action</CDropdownToggle>

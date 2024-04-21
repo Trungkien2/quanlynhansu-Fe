@@ -41,6 +41,7 @@ const TimeKeepingUser = () => {
           isOpen: true,
           message: 'Check out success',
         })
+        findCheckinOnDate()
       } catch (error) {
         alert(error.response.data.message)
       }
