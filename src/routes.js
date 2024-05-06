@@ -73,6 +73,18 @@ const TimeKeepingAdmin = React.lazy(() => import('./views/pages/timeKeeping/TIme
 // news
 const newist = React.lazy(() => import('./views/pages/news/NewList'))
 const CrudN = React.lazy(() => import('./views/pages/news/CrudNew'))
+// league
+const LeagueList = React.lazy(() => import('./views/pages/leauge/NewList'))
+const LeagueTeamList = React.lazy(() => import('./views/pages/leauge/LeaugeTeamList'))
+const CrudL = React.lazy(() => import('./views/pages/leauge/CrudNew'))
+
+// team
+const TeamList = React.lazy(() => import('./views/pages/team/NewList'))
+const Crudteam = React.lazy(() => import('./views/pages/team/CrudNew'))
+
+// football match
+const FootballMatchList = React.lazy(() => import('./views/pages/footbal_match/NewList'))
+const CrudFootballMatch = React.lazy(() => import('./views/pages/footbal_match/CrudNew'))
 
 const routes = [
   { path: '/', exact: true, name: 'Home' },
@@ -142,6 +154,19 @@ const routes = [
   { path: '/new', name: 'newList', element: newist },
   { path: '/new/create', name: 'newList', element: CrudN },
   { path: '/new/:id', name: 'newList', element: CrudN },
+
+  { path: '/league', name: 'leagueList', element: LeagueList },
+  { path: '/league/team/:id', name: 'leagueList', element: LeagueTeamList },
+  { path: '/league/create', name: 'leagueList', element: CrudL },
+  { path: '/league/:id', name: 'leagueList', element: CrudL },
+
+  { path: '/team', name: 'teamList', element: TeamList },
+  { path: '/team/create', name: 'teamList', element: Crudteam },
+  { path: '/team/:id', name: 'teamList', element: Crudteam },
+
+  { path: '/fooball_match', name: 'teamList', element: FootballMatchList },
+  { path: '/fooball_match/create', name: 'teamList', element: CrudFootballMatch },
+  { path: '/fooball_match/:id', name: 'teamList', element: CrudFootballMatch },
 ]
 
 export default routes

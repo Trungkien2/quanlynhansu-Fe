@@ -6,4 +6,8 @@ export const ROUTE_API = {
   DEPARTMENT: '/department',
   TIME_KEEPING: '/timekeeping',
   NEW: '/news',
+  LEAGUE: '/league',
+  LEAGUE_TEAM: '/league_team',
+  TEAM: '/team',
+  FOOTBALL_MATCH: '/football_match',
 }

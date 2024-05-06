@@ -325,6 +325,27 @@ const _nav = [
     to: '/new',
     icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />,
   },
+
+  {
+    component: CNavItem,
+    name: 'League',
+    to: '/league',
+    icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />,
+  },
+
+  {
+    component: CNavItem,
+    name: 'Team',
+    to: '/team',
+    icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />,
+  },
+
+  {
+    component: CNavItem,
+    name: 'Football match',
+    to: '/fooball_match',
+    icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />,
+  },
 ]
 
 export default _nav
