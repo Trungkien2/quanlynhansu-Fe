@@ -57,8 +57,11 @@ const CrudLeague = () => {
       })
       console.log('🚀 ~ getOne ~ res:', res)
       const fieldData = {
-        name: res.name,
-        link_logo: res.link_logo,
+        score_team_a: +res.score_team_a,
+        score_team_b: +res.score_team_b,
+        status: res.status,
+        team_a_id: res.team_a_id,
+        team_b_id: res.team_b_id,
       }
       Object.entries(fieldData).forEach(([fieldName, value]) => {
         setValue(fieldName, value)
