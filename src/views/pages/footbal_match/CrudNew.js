@@ -36,6 +36,7 @@ const CrudLeague = () => {
       status: 'WAITING',
       team_a_id: '',
       team_a_id: '',
+      start_time: '',
     },
   })
 
@@ -62,6 +63,7 @@ const CrudLeague = () => {
         status: res.status,
         team_a_id: res.team_a_id,
         team_b_id: res.team_b_id,
+        start_time: res.start_time,
       }
       Object.entries(fieldData).forEach(([fieldName, value]) => {
         setValue(fieldName, value)
@@ -91,6 +93,7 @@ const CrudLeague = () => {
         status: data.status,
         team_a_id: data.team_a_id,
         team_b_id: data.team_b_id,
+        start_time: data.start_time,
       }
       if (id) {
         res = await employeeApi.edit(id, body)
@@ -180,6 +183,16 @@ const CrudLeague = () => {
                         field.onChange(e.target.value)
                       }}
                     />
+                  )}
+                />
+              </CInputGroup>
+
+              <CInputGroup className="mb-3">
+                <Controller
+                  name="start_time"
+                  control={control}
+                  render={({ field }) => (
+                    <CFormInput placeholder="Start time" autoComplete="username" {...field} />
                   )}
                 />
               </CInputGroup>
